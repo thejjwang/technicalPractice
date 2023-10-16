@@ -15,13 +15,13 @@
 const sortStrings = (arr) => {
     let uppercaseArr = [];
     let lowercaseArr = [];
-    // for (let str of arr) {
-    for (let i = 0; i < arr.length; i++) {
-        let word = arr[i];
-        if (word[0] === word[0].toLowerCase()) {
-            lowercaseArr.push(arr[i]);
+    for (let str of arr) {
+    // for (let i = 0; i < arr.length; i++) {
+        // let word = arr[i];
+        if (str[0] === str[0].toLowerCase()) {
+            lowercaseArr.push(str);
         } else {
-            uppercaseArr.push(arr[i]);
+            uppercaseArr.push(str);
         }
     }
     return lowercaseArr.concat(uppercaseArr);
