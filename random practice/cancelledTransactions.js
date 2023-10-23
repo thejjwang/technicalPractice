@@ -5,16 +5,16 @@
 // the same sender and receiver and the sum of their amount is equal 
 // to zero. Return an array of pairs of transaction objects that cancel each other.
 
-const transactions = [
-    { id: 1, sender: 'A', receiver: 'B', amount: 100 },
-    { id: 2, sender: 'B', receiver: 'A', amount: -100 },
-    { id: 3, sender: 'C', receiver: 'D', amount: 50 },
-    { id: 4, sender: 'D', receiver: 'C', amount: -50 },
-    { id: 5, sender: 'X', receiver: 'Y', amount: 200 },
-  ];
+// const transactions = [
+//     { id: 1, sender: 'A', receiver: 'B', amount: 100 },
+//     { id: 2, sender: 'B', receiver: 'A', amount: -100 },
+//     { id: 3, sender: 'C', receiver: 'D', amount: 50 },
+//     { id: 4, sender: 'D', receiver: 'C', amount: -50 },
+//     { id: 5, sender: 'X', receiver: 'Y', amount: 200 },
+//   ];
   
-  const canceledTransactions = findCanceledTransactions(transactions);
-  console.log(canceledTransactions);
+//   const canceledTransactions = findCanceledTransactions(transactions);
+//   console.log(canceledTransactions);
 // Should output: [{id: 1, sender: 'A', receiver: 'B', amount: 100}, {id: 2, sender: 'B', receiver: 'A', amount: -100}]
 
 
@@ -32,7 +32,32 @@ const transactions = [
 //    3. If the Map doesn't have a transaction with the same key, add the current transaction to the Map.
 // 4. Return the array of canceled transactions.
 
-const cancelledTransactions = () => {
+const cancelledTransactions = (transactions) => {
+  const transactionMap = new Map();
+  let cancelledTransactions = [];
+  transactions.forEach(transaction => {
+      let key = transaction.sender + transaction.receiver
+      if (transactionMap.has(key)) {
+        // let oppositeTransaction = transactionMap.get(key)
 
+        if (transaction.amount + oppositeTransaction.amount === 0) {
+          cancelledTransactions.push(transaction, oppositeTransaction);
+          console.log(cancelledTransactions)
+          transactionMap.delete(key);
+        } else {
+          transactionMap.set(key, transaction);
+        }
+      } else {
+        transactionMap.set(key, transaction);
+      } 
+      return cancelledTransactions;
+  });
 
 }
+console.log(cancelledTransactions([
+  { id: 1, sender: 'A', receiver: 'B', amount: 100 },
+  { id: 2, sender: 'B', receiver: 'A', amount: -100 },
+  { id: 3, sender: 'C', receiver: 'D', amount: 50 },
+  { id: 4, sender: 'D', receiver: 'C', amount: -50 },
+  { id: 5, sender: 'X', receiver: 'Y', amount: 200 },
+]))
