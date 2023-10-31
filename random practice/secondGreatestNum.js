@@ -12,7 +12,7 @@ const findSecondGreatestNum = (nums) => {
     //         greatestNum = nums[i];
     //     }
     // }
-    // let greatestNumIndex = nums.indexOf(greatestNum);
+    // let greatestNumIndex = nums.indexOf(greatestNum);c
     // delete nums[greatestNumIndex];
 
     // let newGreatestNum = nums[0];
