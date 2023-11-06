@@ -5,12 +5,16 @@
 // return ans
 
 const getConcatenation = (nums) => {
-    // let ans = nums + nums
-    // for (let i = 0; i < nums.length; i++) {
-    //     ans.push(nums[i]);
-    // }
-    // console.log(ans);
-    return [...nums, ...nums]
+    let length = nums.length
+    let ans = [];
+    for (let i = 0; i < length*2; i++) {
+        if (i >= length) {
+            ans[i] = nums[i-length];
+        } else {
+            ans[i] = nums[i]
+        }
+    }
+    return ans
 
 }
 console.log(getConcatenation([1,2,1]));
