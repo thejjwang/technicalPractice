@@ -14,13 +14,20 @@
  // then nums.splice(i)
  // return nums.length after removing elements
  var removeElement = function(nums, val) {
-    let index = 0
+    let k = 0; // Initialize the count of non-val elements
+
     for (let i = 0; i < nums.length; i++) {
         if (nums[i] !== val) {
-            nums[index] = nums[i];
-            index++;
+            nums[k] = nums[i]; // Overwrite elements at index k
+            k++; // Increment k for each non-val element found
         }
     }
-    return index;
- };
- console.log(removeElement([0,1,2,2,3,0,4,2], 2));
+
+    return k; // Return the count of non-val elements
+};
+
+const nums = [0, 1, 2, 2, 3, 0, 4, 2];
+const val = 2;
+const k = removeElement(nums, val);
+console.log("Length:", k); // Updated length (k)
+console.log("Array:", nums.slice(0, k)); // Updated array containing non-val elements
